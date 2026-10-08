@@ -2055,10 +2055,17 @@ body {
     width: 100% !important;
     max-width: 100% !important;
     -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: transparent;
   }
 
   * {
     box-sizing: border-box !important;
+  }
+
+  /* Prevent text inflation on mobile */
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   .site-container {
@@ -2066,12 +2073,15 @@ body {
     max-width: 100% !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
   .hero-frame {
     padding-left: 12px !important;
     padding-right: 12px !important;
     max-width: 100% !important;
+    width: 100% !important;
   }
 
   /* 2. Responsive Mobile Navbar */
@@ -2094,11 +2104,13 @@ body {
 
   .navbar-store {
     width: auto !important;
-    height: 36px !important;
+    height: 38px !important;
+    min-height: 38px !important;
     padding: 0 14px !important;
-    font-size: 12.5px !important;
+    font-size: 13px !important;
     gap: 6px !important;
     border-radius: 999px !important;
+    touch-action: manipulation;
   }
 
   .navbar-logo {
@@ -2117,31 +2129,32 @@ body {
     min-height: 480px !important;
     height: auto !important;
     padding: 36px 14px 28px 14px !important;
-    border-radius: 20px !important;
+    border-radius: 22px !important;
   }
 
   .hero-content {
     padding: 10px 4px !important;
-    gap: 12px !important;
+    gap: 14px !important;
     max-width: 100% !important;
   }
 
   .collection-badge {
-    font-size: 11.5px !important;
-    padding: 5px 12px !important;
+    font-size: 12px !important;
+    padding: 6px 14px !important;
     margin-bottom: 4px !important;
   }
 
   .hero-title {
-    font-size: clamp(23px, 6.8vw, 32px) !important;
+    font-size: clamp(24px, 7vw, 34px) !important;
     line-height: 1.32 !important;
     max-width: 100% !important;
     padding: 0 4px !important;
+    letter-spacing: -0.02em !important;
   }
 
   .hero-description {
-    font-size: 13.5px !important;
-    line-height: 1.65 !important;
+    font-size: 15px !important;
+    line-height: 1.7 !important;
     max-width: 95% !important;
     margin: 0 auto 6px auto !important;
     color: #cbd5e1 !important;
@@ -2150,20 +2163,24 @@ body {
   .hero-cta,
   .hero-content .cta-button,
   .hero-content a[href="#store"] {
-    min-height: 46px !important;
-    font-size: 13.5px !important;
-    padding: 12px 24px !important;
+    min-height: 48px !important;
+    font-size: 14.5px !important;
+    padding: 13px 28px !important;
     border-radius: 999px !important;
     width: auto !important;
-    max-width: 90% !important;
+    max-width: 95% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    touch-action: manipulation;
   }
 
   /* 4. Showcase Product Sections (TashilProject, Atheer, Ramadanyt, Photoshop) */
   .showcase-section {
     width: 100% !important;
-    margin: 24px auto !important;
+    margin: 28px auto !important;
     padding: 24px 14px !important;
-    border-radius: 20px !important;
+    border-radius: 22px !important;
   }
 
   .showcase-container {
@@ -2176,7 +2193,7 @@ body {
     width: 100% !important;
     height: auto !important;
     aspect-ratio: 16 / 10 !important;
-    max-height: 280px !important;
+    max-height: 290px !important;
     border-radius: 18px !important;
   }
 
@@ -2186,33 +2203,34 @@ body {
   }
 
   .showcase-section .main-title {
-    font-size: clamp(20px, 5.8vw, 28px) !important;
+    font-size: clamp(22px, 6vw, 30px) !important;
     line-height: 1.3 !important;
     margin-bottom: 12px !important;
     text-align: right !important;
   }
 
   .showcase-section .description {
-    font-size: 13.5px !important;
-    line-height: 1.65 !important;
-    margin-bottom: 20px !important;
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+    margin-bottom: 22px !important;
   }
 
   .showcase-section .primary-btn {
     width: 100% !important;
     min-height: 48px !important;
     justify-content: center !important;
-    font-size: 14px !important;
-    padding: 12px 20px !important;
+    font-size: 15px !important;
+    padding: 13px 22px !important;
     border-radius: 14px !important;
+    touch-action: manipulation;
   }
 
   /* 5. Home Featured Store Products Section */
   .tm-featured-section-wrapper {
     width: 100% !important;
-    margin: 24px auto !important;
+    margin: 28px auto !important;
     padding: 24px 14px !important;
-    border-radius: 20px !important;
+    border-radius: 22px !important;
   }
 
   .tm-section-header {
@@ -2220,14 +2238,14 @@ body {
   }
 
   .tm-section-title {
-    font-size: clamp(20px, 5.5vw, 26px) !important;
+    font-size: clamp(22px, 5.8vw, 28px) !important;
     line-height: 1.3 !important;
   }
 
   .tm-section-desc {
-    font-size: 13px !important;
-    line-height: 1.6 !important;
-    margin-top: 6px !important;
+    font-size: 14.5px !important;
+    line-height: 1.65 !important;
+    margin-top: 8px !important;
   }
 
   .tm-tabs-wrapper {
@@ -2236,7 +2254,7 @@ body {
     -webkit-overflow-scrolling: touch !important;
     flex-wrap: nowrap !important;
     gap: 8px !important;
-    padding: 4px 2px 10px 2px !important;
+    padding: 4px 2px 12px 2px !important;
     scrollbar-width: none !important;
   }
 
@@ -2246,17 +2264,18 @@ body {
 
   .tm-tab-btn {
     flex-shrink: 0 !important;
-    font-size: 12px !important;
-    padding: 7px 14px !important;
+    font-size: 13px !important;
+    padding: 8px 16px !important;
     border-radius: 20px !important;
-    min-height: 36px !important;
+    min-height: 40px !important;
     white-space: nowrap !important;
+    touch-action: manipulation;
   }
 
   .tm-latest-grid {
     grid-template-columns: 1fr !important;
-    gap: 16px !important;
-    margin-top: 16px !important;
+    gap: 18px !important;
+    margin-top: 18px !important;
   }
 
   .tm-latest-card {
@@ -2264,17 +2283,18 @@ body {
   }
 
   .tm-latest-content {
-    padding: 16px !important;
+    padding: 18px !important;
   }
 
   .tm-latest-title {
-    font-size: 15px !important;
-    line-height: 1.4 !important;
+    font-size: 16px !important;
+    line-height: 1.45 !important;
   }
 
   .tm-latest-btn {
-    min-height: 44px !important;
-    font-size: 13px !important;
+    min-height: 46px !important;
+    font-size: 14px !important;
+    touch-action: manipulation;
   }
 
   /* 6. Store Page Mobile Reflow */
@@ -2283,81 +2303,86 @@ body {
   }
 
   .tashil-hero-swiper {
-    height: 280px !important;
-    border-radius: 18px !important;
-    margin-bottom: 20px !important;
+    height: 290px !important;
+    border-radius: 20px !important;
+    margin-bottom: 22px !important;
   }
 
   .tashil-hero-content {
-    padding: 16px 14px !important;
+    padding: 18px 16px !important;
   }
 
   .tashil-hero-badge {
-    font-size: 10.5px !important;
-    padding: 3px 10px !important;
+    font-size: 11px !important;
+    padding: 4px 12px !important;
   }
 
   .tashil-hero-title {
-    font-size: 18px !important;
+    font-size: 19px !important;
     line-height: 1.35 !important;
-    margin-bottom: 10px !important;
+    margin-bottom: 12px !important;
   }
 
   .tashil-hero-actions {
     flex-wrap: wrap !important;
-    gap: 8px !important;
+    gap: 10px !important;
   }
 
   .tashil-hero-btn {
-    padding: 7px 16px !important;
-    font-size: 12px !important;
-    min-height: 38px !important;
+    padding: 8px 18px !important;
+    font-size: 13px !important;
+    min-height: 42px !important;
+    touch-action: manipulation;
   }
 
   .tashil-hero-price {
-    font-size: 14px !important;
+    font-size: 15px !important;
   }
 
   .tashil-search-wrapper input {
-    padding: 12px 42px 12px 14px !important;
-    font-size: 13.5px !important;
-    border-radius: 14px !important;
+    padding: 14px 44px 14px 16px !important;
+    font-size: 14px !important;
+    border-radius: 16px !important;
   }
 
   .tashil-store-grid {
     grid-template-columns: 1fr !important;
-    gap: 16px !important;
+    gap: 18px !important;
   }
 
   /* 7. Product Detail Page Mobile Reflow */
   .tashil-floating-bar {
     width: calc(100% - 20px) !important;
-    bottom: 10px !important;
+    bottom: 12px !important;
   }
 
   .tashil-floating-container {
-    padding: 6px 10px !important;
-    gap: 8px !important;
+    padding: 6px 12px !important;
+    gap: 10px !important;
   }
 
   .tashil-pill-tab {
-    padding: 6px 12px !important;
-    font-size: 11.5px !important;
+    padding: 8px 14px !important;
+    font-size: 12px !important;
+    min-height: 40px !important;
+    touch-action: manipulation;
   }
 
   .tashil-pill-buy-btn {
-    padding: 8px 16px !important;
-    font-size: 12px !important;
+    padding: 10px 18px !important;
+    font-size: 13px !important;
+    min-height: 40px !important;
+    touch-action: manipulation;
   }
 
   /* 8. Breadcrumbs Mobile Sizing */
   .tm-breadcrumbs-wrapper {
     padding: 0 12px !important;
-    margin: 10px auto !important;
+    margin: 12px auto !important;
   }
 
   .tm-breadcrumbs-container {
-    font-size: 12px !important;
+    font-size: 13px !important;
     gap: 6px !important;
     overflow-x: auto !important;
     white-space: nowrap !important;
@@ -2371,14 +2396,14 @@ body {
 
   /* 9. Global Footer Mobile Optimization */
   footer {
-    padding-top: 24px !important;
-    padding-bottom: 24px !important;
-    margin-top: 24px !important;
+    padding-top: 28px !important;
+    padding-bottom: 28px !important;
+    margin-top: 28px !important;
   }
 
   footer .site-card-muted {
-    padding: 24px 14px !important;
-    border-radius: 20px !important;
+    padding: 26px 16px !important;
+    border-radius: 22px !important;
   }
 
   /* 10. Modals & Dialogs on Mobile */
@@ -2389,8 +2414,8 @@ body {
 
   .modal-card {
     max-width: 100% !important;
-    border-radius: 20px !important;
-    padding: 20px 16px !important;
+    border-radius: 22px !important;
+    padding: 22px 16px !important;
   }
 }
 
@@ -2405,9 +2430,10 @@ body {
   }
 
   .navbar-store {
-    padding: 0 10px !important;
-    font-size: 11.5px !important;
-    height: 34px !important;
+    padding: 0 11px !important;
+    font-size: 12px !important;
+    height: 36px !important;
+    min-height: 36px !important;
   }
 
   .navbar-logo {
@@ -2421,29 +2447,42 @@ body {
   }
 
   .hero-title {
-    font-size: 24px !important;
+    font-size: 25px !important;
     line-height: 1.3 !important;
   }
 
   .hero-description {
-    font-size: 12.5px !important;
+    font-size: 13.5px !important;
+    line-height: 1.65 !important;
   }
 
   .video-card.hero {
-    min-height: 440px !important;
-    padding: 28px 10px 20px 10px !important;
+    min-height: 450px !important;
+    padding: 30px 10px 22px 10px !important;
   }
 
   .showcase-section .main-title {
-    font-size: 20px !important;
+    font-size: 21px !important;
   }
 
   .showcase-section .description {
-    font-size: 12.5px !important;
+    font-size: 13.5px !important;
   }
 
   .slider-card {
-    max-height: 230px !important;
+    max-height: 240px !important;
+  }
+}
+
+/* Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
