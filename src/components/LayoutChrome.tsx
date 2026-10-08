@@ -25,6 +25,47 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [secretPassword, setSecretPassword] = useState('');
   const [secretError, setSecretError] = useState(false);
   const secretInputRef = useRef<HTMLInputElement>(null);
+  const secretContainerRef = useRef<HTMLDivElement>(null);
+  const mobileDrawerRef = useRef<HTMLDivElement>(null);
+
+  // Close secret popup when clicking or touching outside
+  useEffect(() => {
+    if (!showSecretInput) return;
+    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
+      if (
+        secretContainerRef.current &&
+        !secretContainerRef.current.contains(e.target as Node)
+      ) {
+        setShowSecretInput(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [showSecretInput]);
+
+  // Close mobile drawer when clicking or touching outside
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
+      if (
+        mobileDrawerRef.current &&
+        !mobileDrawerRef.current.contains(e.target as Node) &&
+        !(e.target as HTMLElement).closest('button[aria-label="القائمة"]')
+      ) {
+        setMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,6 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       handleNav('home');
     } else {
       setShowSecretInput((prev) => !prev);
+      setMobileMenuOpen(false);
       setSecretPassword('');
       setSecretError(false);
       setTimeout(() => secretInputRef.current?.focus(), 80);
@@ -150,7 +192,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => {
+              setMobileMenuOpen((prev) => !prev);
+              setShowSecretInput(false);
+            }}
             className="lg:hidden p-2 rounded-full text-[#0f172a] hover:bg-[#f1f5f9] cursor-pointer"
             aria-label="القائمة"
           >
@@ -185,22 +230,28 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Secret mini slide under the logo (Pure Glass transparent) */}
           <AnimatePresence>
             {showSecretInput && (
-              <motion.div
-                initial={{ opacity: 0, y: -6, scale: 0.96 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -6, scale: 0.96 }}
-                transition={{ duration: 0.2, ease: 'easeOut' }}
-                className="absolute top-[calc(100%+8px)] right-1 z-50 flex items-center gap-1.5 py-1.5 px-3 rounded-full"
-                style={{
-                  background: 'rgba(255, 255, 255, 0.75)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255, 255, 255, 0.9)',
-                  boxShadow: '0 12px 32px rgba(15, 23, 42, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.95)',
-                }}
-                dir="ltr"
-                onClick={(e) => e.stopPropagation()}
-              >
+              <>
+                <div
+                  className="fixed inset-0 z-40 bg-black/10 backdrop-blur-[1px]"
+                  onClick={() => setShowSecretInput(false)}
+                />
+                <motion.div
+                  ref={secretContainerRef}
+                  initial={{ opacity: 0, y: -6, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -6, scale: 0.96 }}
+                  transition={{ duration: 0.2, ease: 'easeOut' }}
+                  className="navbar-secret-slide absolute top-[calc(100%+8px)] right-1 z-50 flex items-center gap-1.5 py-1.5 px-3 rounded-full"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.75)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.9)',
+                    boxShadow: '0 12px 32px rgba(15, 23, 42, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.95)',
+                  }}
+                  dir="ltr"
+                  onClick={(e) => e.stopPropagation()}
+                >
                 <span className="text-[12px] select-none opacity-90">🔐</span>
                 <form onSubmit={handleSecretSubmit} className="flex items-center gap-1.5">
                   <input
@@ -248,6 +299,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </button>
                 </form>
               </motion.div>
+              </>
             )}
           </AnimatePresence>
 
@@ -329,17 +381,23 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Mobile Dropdown (< 1024px) */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="lg:hidden absolute top-[calc(100%+8px)] inset-x-0 bg-white border border-[#e5e7eb] rounded-[24px] p-4 flex flex-col gap-1 z-50"
-            style={{
-              boxShadow: '0 4px 18px rgba(15, 23, 42, 0.08)',
-            }}
-            dir="rtl"
-          >
+          <>
+            <div
+              className="lg:hidden fixed inset-0 z-40 bg-black/15 backdrop-blur-[1px]"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            <motion.div
+              ref={mobileDrawerRef}
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="navbar-mobile-drawer lg:hidden absolute top-[calc(100%+8px)] inset-x-0 bg-white border border-[#e5e7eb] rounded-[24px] p-3 flex flex-col z-50"
+              style={{
+                boxShadow: '0 8px 32px rgba(15, 23, 42, 0.12)',
+              }}
+              dir="rtl"
+            >
             {navItems.map((item) => {
               const isActive =
                 activePage === item.id || (item.id === 'store' && activePage === 'product');
@@ -351,11 +409,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                     e.preventDefault();
                     handleNav(item.id);
                   }}
-                  className={`w-full text-right py-2.5 px-4 rounded-full text-[13px] cursor-pointer ${
+                  className={`w-full text-right py-3.5 px-5 rounded-2xl text-[16px] font-semibold cursor-pointer transition-colors ${
                     isActive
                       ? 'bg-[#f1f5f9] text-[#0f172a] font-bold'
-                      : 'text-[#334155] font-medium'
+                      : 'text-[#334155] hover:bg-[#f8fafc]'
                   }`}
+                  style={{ minHeight: '52px', display: 'flex', alignItems: 'center' }}
                 >
                   {item.label}
                 </a>
@@ -368,17 +427,19 @@ export const Navbar: React.FC<NavbarProps> = ({
                   e.preventDefault();
                   handleNav('admin');
                 }}
-                className={`inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-[12px] font-semibold cursor-pointer transition-colors ${
+                className={`mt-1 w-full inline-flex items-center justify-end gap-2 py-3 px-5 rounded-2xl text-[15px] font-semibold cursor-pointer transition-colors ${
                   activePage === 'admin'
                     ? 'bg-[#0B96B8] text-white'
                     : 'bg-slate-100 text-[#475569] hover:bg-slate-200 hover:text-[#0f172a]'
                 }`}
+                style={{ minHeight: '48px' }}
               >
-                <Settings className="w-3.5 h-3.5" />
+                <Settings className="w-4 h-4" />
                 <span>الإدارة</span>
               </a>
             )}
           </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>

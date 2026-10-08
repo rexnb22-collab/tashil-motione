@@ -2248,6 +2248,99 @@ body {
     font-weight: 700 !important;
   }
 
+  /* ── Mobile Menu Drawer ─────────────────────────────────────────────── */
+  .navbar-mobile-drawer {
+    background: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 24px !important;
+    padding: 10px !important;
+    box-shadow: 0 8px 32px rgba(15, 23, 42, 0.12) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+    z-index: 50 !important;
+  }
+
+  /* Each nav link row inside the drawer */
+  .navbar-mobile-drawer a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    text-align: right !important;
+    min-height: 52px !important;
+    padding: 0 20px !important;
+    border-radius: 16px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #334155 !important;
+    text-decoration: none !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+    transition: background-color 0.15s ease !important;
+  }
+
+  .navbar-mobile-drawer a:active {
+    background-color: #f1f5f9 !important;
+  }
+
+  /* Active link */
+  .navbar-mobile-drawer a[class*="bg-"] {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+    font-weight: 700 !important;
+  }
+
+  /* Admin link active inside drawer */
+  .navbar-mobile-drawer a.text-white {
+    background-color: #0B96B8 !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+  }
+
+  /* Mobile Secret Admin Access Slide (.navbar-secret-slide) */
+  .navbar-secret-slide {
+    top: calc(100% + 8px) !important;
+    right: 0 !important;
+    padding: 6px 10px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15) !important;
+    gap: 6px !important;
+    z-index: 50 !important;
+    max-width: calc(100vw - 32px) !important;
+  }
+
+  .navbar-secret-slide input {
+    height: 36px !important;
+    width: 96px !important;
+    font-size: 16px !important; /* Prevents iOS Safari auto-zoom */
+    padding: 0 10px !important;
+    border-radius: 999px !important;
+  }
+
+  .navbar-secret-slide button[type="submit"] {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    font-size: 13px !important;
+    border-radius: 999px !important;
+    touch-action: manipulation !important;
+  }
+
+  .navbar-secret-slide button[type="button"] {
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    min-height: 30px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+    touch-action: manipulation !important;
+  }
+
   /* --------------------------------------------------------------------------
      3. Hero Section Reflow
      -------------------------------------------------------------------------- */
