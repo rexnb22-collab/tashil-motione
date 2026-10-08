@@ -2042,3 +2042,409 @@ body {
   font-weight: 700 !important;
 }
 
+/* ==========================================================================
+   DEDICATED RESPONSIVE MOBILE LAYOUT (PHONES & SMALL TABLETS ONLY)
+   Desktop layout (>= 769px) is preserved 100% untouched.
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* 1. Global Viewport & Container Reset */
+  html,
+  body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  * {
+    box-sizing: border-box !important;
+  }
+
+  .site-container {
+    width: calc(100% - 24px) !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .hero-frame {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    max-width: 100% !important;
+  }
+
+  /* 2. Responsive Mobile Navbar */
+  .site-navbar,
+  .navbar {
+    width: calc(100% - 24px) !important;
+    height: 60px !important;
+    min-height: 60px !important;
+    padding: 0 12px !important;
+    top: 8px !important;
+    border-radius: 24px !important;
+  }
+
+  .navbar-inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+
+  .navbar-store {
+    width: auto !important;
+    height: 36px !important;
+    padding: 0 14px !important;
+    font-size: 12.5px !important;
+    gap: 6px !important;
+    border-radius: 999px !important;
+  }
+
+  .navbar-logo {
+    width: 120px !important;
+    height: 38px !important;
+  }
+
+  .navbar-logo svg {
+    width: 120px !important;
+    height: 38px !important;
+  }
+
+  /* 3. Hero Section Card Reflow */
+  .video-card.hero {
+    margin-top: 76px !important;
+    min-height: 480px !important;
+    height: auto !important;
+    padding: 36px 14px 28px 14px !important;
+    border-radius: 20px !important;
+  }
+
+  .hero-content {
+    padding: 10px 4px !important;
+    gap: 12px !important;
+    max-width: 100% !important;
+  }
+
+  .collection-badge {
+    font-size: 11.5px !important;
+    padding: 5px 12px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .hero-title {
+    font-size: clamp(23px, 6.8vw, 32px) !important;
+    line-height: 1.32 !important;
+    max-width: 100% !important;
+    padding: 0 4px !important;
+  }
+
+  .hero-description {
+    font-size: 13.5px !important;
+    line-height: 1.65 !important;
+    max-width: 95% !important;
+    margin: 0 auto 6px auto !important;
+    color: #cbd5e1 !important;
+  }
+
+  .hero-cta,
+  .hero-content .cta-button,
+  .hero-content a[href="#store"] {
+    min-height: 46px !important;
+    font-size: 13.5px !important;
+    padding: 12px 24px !important;
+    border-radius: 999px !important;
+    width: auto !important;
+    max-width: 90% !important;
+  }
+
+  /* 4. Showcase Product Sections (TashilProject, Atheer, Ramadanyt, Photoshop) */
+  .showcase-section {
+    width: 100% !important;
+    margin: 24px auto !important;
+    padding: 24px 14px !important;
+    border-radius: 20px !important;
+  }
+
+  .showcase-container {
+    flex-direction: column-reverse !important;
+    gap: 24px !important;
+    width: 100% !important;
+  }
+
+  .slider-card {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 10 !important;
+    max-height: 280px !important;
+    border-radius: 18px !important;
+  }
+
+  .showcase-section .text-content {
+    text-align: right !important;
+    width: 100% !important;
+  }
+
+  .showcase-section .main-title {
+    font-size: clamp(20px, 5.8vw, 28px) !important;
+    line-height: 1.3 !important;
+    margin-bottom: 12px !important;
+    text-align: right !important;
+  }
+
+  .showcase-section .description {
+    font-size: 13.5px !important;
+    line-height: 1.65 !important;
+    margin-bottom: 20px !important;
+  }
+
+  .showcase-section .primary-btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+    padding: 12px 20px !important;
+    border-radius: 14px !important;
+  }
+
+  /* 5. Home Featured Store Products Section */
+  .tm-featured-section-wrapper {
+    width: 100% !important;
+    margin: 24px auto !important;
+    padding: 24px 14px !important;
+    border-radius: 20px !important;
+  }
+
+  .tm-section-header {
+    margin-bottom: 24px !important;
+  }
+
+  .tm-section-title {
+    font-size: clamp(20px, 5.5vw, 26px) !important;
+    line-height: 1.3 !important;
+  }
+
+  .tm-section-desc {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    margin-top: 6px !important;
+  }
+
+  .tm-tabs-wrapper {
+    display: flex !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    padding: 4px 2px 10px 2px !important;
+    scrollbar-width: none !important;
+  }
+
+  .tm-tabs-wrapper::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .tm-tab-btn {
+    flex-shrink: 0 !important;
+    font-size: 12px !important;
+    padding: 7px 14px !important;
+    border-radius: 20px !important;
+    min-height: 36px !important;
+    white-space: nowrap !important;
+  }
+
+  .tm-latest-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin-top: 16px !important;
+  }
+
+  .tm-latest-card {
+    border-radius: 18px !important;
+  }
+
+  .tm-latest-content {
+    padding: 16px !important;
+  }
+
+  .tm-latest-title {
+    font-size: 15px !important;
+    line-height: 1.4 !important;
+  }
+
+  .tm-latest-btn {
+    min-height: 44px !important;
+    font-size: 13px !important;
+  }
+
+  /* 6. Store Page Mobile Reflow */
+  .tashil-store-container {
+    padding: 0 12px !important;
+  }
+
+  .tashil-hero-swiper {
+    height: 280px !important;
+    border-radius: 18px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .tashil-hero-content {
+    padding: 16px 14px !important;
+  }
+
+  .tashil-hero-badge {
+    font-size: 10.5px !important;
+    padding: 3px 10px !important;
+  }
+
+  .tashil-hero-title {
+    font-size: 18px !important;
+    line-height: 1.35 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .tashil-hero-actions {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  .tashil-hero-btn {
+    padding: 7px 16px !important;
+    font-size: 12px !important;
+    min-height: 38px !important;
+  }
+
+  .tashil-hero-price {
+    font-size: 14px !important;
+  }
+
+  .tashil-search-wrapper input {
+    padding: 12px 42px 12px 14px !important;
+    font-size: 13.5px !important;
+    border-radius: 14px !important;
+  }
+
+  .tashil-store-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* 7. Product Detail Page Mobile Reflow */
+  .tashil-floating-bar {
+    width: calc(100% - 20px) !important;
+    bottom: 10px !important;
+  }
+
+  .tashil-floating-container {
+    padding: 6px 10px !important;
+    gap: 8px !important;
+  }
+
+  .tashil-pill-tab {
+    padding: 6px 12px !important;
+    font-size: 11.5px !important;
+  }
+
+  .tashil-pill-buy-btn {
+    padding: 8px 16px !important;
+    font-size: 12px !important;
+  }
+
+  /* 8. Breadcrumbs Mobile Sizing */
+  .tm-breadcrumbs-wrapper {
+    padding: 0 12px !important;
+    margin: 10px auto !important;
+  }
+
+  .tm-breadcrumbs-container {
+    font-size: 12px !important;
+    gap: 6px !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .tm-breadcrumbs-container::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* 9. Global Footer Mobile Optimization */
+  footer {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+    margin-top: 24px !important;
+  }
+
+  footer .site-card-muted {
+    padding: 24px 14px !important;
+    border-radius: 20px !important;
+  }
+
+  /* 10. Modals & Dialogs on Mobile */
+  .modal-backdrop,
+  .site-modal {
+    padding: 12px !important;
+  }
+
+  .modal-card {
+    max-width: 100% !important;
+    border-radius: 20px !important;
+    padding: 20px 16px !important;
+  }
+}
+
+/* Specific Extra-Small Phone Adjustments (320px - 480px) */
+@media (max-width: 480px) {
+  .site-navbar,
+  .navbar {
+    width: calc(100% - 16px) !important;
+    padding: 0 10px !important;
+    height: 56px !important;
+    min-height: 56px !important;
+  }
+
+  .navbar-store {
+    padding: 0 10px !important;
+    font-size: 11.5px !important;
+    height: 34px !important;
+  }
+
+  .navbar-logo {
+    width: 105px !important;
+    height: 34px !important;
+  }
+
+  .navbar-logo svg {
+    width: 105px !important;
+    height: 34px !important;
+  }
+
+  .hero-title {
+    font-size: 24px !important;
+    line-height: 1.3 !important;
+  }
+
+  .hero-description {
+    font-size: 12.5px !important;
+  }
+
+  .video-card.hero {
+    min-height: 440px !important;
+    padding: 28px 10px 20px 10px !important;
+  }
+
+  .showcase-section .main-title {
+    font-size: 20px !important;
+  }
+
+  .showcase-section .description {
+    font-size: 12.5px !important;
+  }
+
+  .slider-card {
+    max-height: 230px !important;
+  }
+}
+
+
