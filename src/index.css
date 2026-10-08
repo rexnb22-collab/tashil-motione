@@ -2082,7 +2082,16 @@ body {
 
   /* Reduce excessive section gaps on mobile */
   .space-y-20 > :not([hidden]) ~ :not([hidden]) {
-    margin-top: 28px !important;
+    margin-top: 20px !important;
+  }
+
+  /* Remove extra top padding from all sections on mobile */
+  .pt-4 {
+    padding-top: 6px !important;
+  }
+
+  .pt-2 {
+    padding-top: 4px !important;
   }
 
   .site-container {
@@ -2351,11 +2360,11 @@ body {
   .video-card,
   .hero,
   .video-card.hero {
-    margin-top: 58px !important;
-    min-height: 420px !important;
+    margin-top: 72px !important; /* navbar 52px + top:10px + 10px gap */
+    min-height: calc(100svh - 80px) !important; /* fill most of viewport */
     height: auto !important;
-    padding: 24px 14px 22px 14px !important;
-    border-radius: 20px !important;
+    padding: 28px 14px 24px 14px !important;
+    border-radius: 22px !important;
     overflow: hidden !important;
     width: calc(100% - 24px) !important;
     max-width: calc(100% - 24px) !important;
@@ -2421,7 +2430,8 @@ body {
      4. Services Grid Section ("كل ما يحتاجه مشروعك في مكان واحد")
      -------------------------------------------------------------------------- */
   .next-section {
-    padding-top: 10px !important;
+    padding-top: 4px !important;
+    padding-bottom: 16px !important;
   }
 
   .next-section .w-16.h-16 {
