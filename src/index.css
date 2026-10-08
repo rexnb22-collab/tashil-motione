@@ -2102,58 +2102,58 @@ body {
   }
 
   /* --------------------------------------------------------------------------
-     2. Priority: Compact Modern Mobile Navbar — FULL FIX
+     2. Beautiful Mobile Navbar — Phone Only
+     Desktop links MUST be hidden. Pill shape. Clean & modern.
      -------------------------------------------------------------------------- */
 
-  /* ── Force hide the desktop nav links on mobile ── */
+  /* ❶ Force-hide desktop nav links on mobile (overrides Tailwind hidden/lg:flex) */
   .navbar-links,
   .site-navbar .navbar-links,
-  div.navbar-links,
-  .hidden.lg\:flex,
-  [class*="hidden"][class*="lg:flex"] {
+  div.navbar-links {
     display: none !important;
     visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    max-width: 0 !important;
+    width: 0 !important;
     overflow: hidden !important;
+    pointer-events: none !important;
   }
 
-  /* ── Navbar pill shell ── */
+  /* ❷ The floating pill navbar */
   .site-navbar,
   .navbar {
+    position: fixed !important;
+    top: 10px !important;
+    left: 10px !important;
+    right: 10px !important;
     width: calc(100% - 20px) !important;
     max-width: calc(100% - 20px) !important;
     height: 52px !important;
     min-height: 52px !important;
-    padding: 0 10px !important;
-    top: 8px !important;
-    left: 0 !important;
-    right: 0 !important;
     margin: 0 auto !important;
+    padding: 0 10px !important;
     border-radius: 999px !important;
-    background: rgba(255, 255, 255, 0.97) !important;
+    background: rgba(255, 255, 255, 0.96) !important;
     backdrop-filter: blur(24px) !important;
     -webkit-backdrop-filter: blur(24px) !important;
     border: 1px solid rgba(229, 231, 235, 0.9) !important;
-    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.1) !important;
+    box-shadow:
+      0 2px 8px rgba(15, 23, 42, 0.06),
+      0 8px 24px rgba(15, 23, 42, 0.08) !important;
     z-index: 9999 !important;
     overflow: visible !important;
   }
 
-  /* ── Navbar inner: 3 zones — left | center | right ── */
+  /* ❸ Inner flex row */
   .navbar-inner {
     height: 100% !important;
     padding: 0 !important;
     display: flex !important;
-    flex-direction: row !important;
     align-items: center !important;
     justify-content: space-between !important;
     gap: 0 !important;
     width: 100% !important;
   }
 
-  /* ── Left zone: store button + hamburger ── */
+  /* ❹ Left group: store btn + icons + hamburger */
   .navbar-inner > div:first-child {
     display: flex !important;
     align-items: center !important;
@@ -2161,126 +2161,95 @@ body {
     flex-shrink: 0 !important;
   }
 
-  /* ── Right zone: logo ── */
-  .navbar-inner > div:last-child {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-    flex-shrink: 0 !important;
-  }
-
-  /* Compact Store Action Button */
+  /* ❺ Store CTA button */
   .navbar-store {
-    width: auto !important;
-    height: 34px !important;
-    min-height: 34px !important;
-    padding: 0 11px !important;
-    font-size: 12px !important;
-    font-weight: 700 !important;
-    gap: 4px !important;
-    border-radius: 999px !important;
-    white-space: nowrap !important;
-    flex-shrink: 0 !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
+    gap: 4px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    padding: 0 14px !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    border-radius: 999px !important;
     background: #0b1220 !important;
     color: #ffffff !important;
-    box-shadow: 0 1px 3px rgba(11, 18, 32, 0.15) !important;
+    border: none !important;
+    cursor: pointer !important;
+    touch-action: manipulation !important;
+    box-shadow: 0 1px 4px rgba(11, 18, 32, 0.2) !important;
+    letter-spacing: 0.01em !important;
   }
 
   .navbar-store svg {
     width: 12px !important;
     height: 12px !important;
+    flex-shrink: 0 !important;
   }
 
-  /* Compact Logo */
+  /* ❻ Logo button */
   .navbar-logo {
-    width: 88px !important;
-    height: 27px !important;
-    min-height: auto !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: flex-end !important;
     flex-shrink: 0 !important;
+    width: 84px !important;
+    height: 28px !important;
     padding: 0 !important;
     background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
   }
 
   .navbar-logo svg,
   .navbar-logo img {
-    width: 88px !important;
-    height: 27px !important;
+    width: 84px !important;
+    height: 28px !important;
     display: block !important;
   }
 
-  /* Clean Hamburger Menu Button */
+  /* ❼ Hamburger button */
   .site-navbar button[aria-label="القائمة"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     width: 36px !important;
     height: 36px !important;
     min-width: 36px !important;
     min-height: 36px !important;
     padding: 0 !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
     border-radius: 999px !important;
     background: #f1f5f9 !important;
     color: #0f172a !important;
     border: 1px solid #e2e8f0 !important;
     flex-shrink: 0 !important;
+    cursor: pointer !important;
+    touch-action: manipulation !important;
   }
 
   .site-navbar button[aria-label="القائمة"] svg {
-    width: 18px !important;
-    height: 18px !important;
+    width: 17px !important;
+    height: 17px !important;
   }
 
-  /* Cart & Admin Buttons in Navbar */
+  /* ❽ Cart & Admin icon buttons */
   .site-navbar button[title="سلة المشتريات"],
   .site-navbar button[title*="Admin"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     width: 34px !important;
     height: 34px !important;
     min-width: 34px !important;
     min-height: 34px !important;
     padding: 0 !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
     border-radius: 999px !important;
     flex-shrink: 0 !important;
-  }
-
-  /* Mobile Dropdown Drawer */
-  .site-navbar [class*="lg:hidden"][class*="absolute"] {
-    top: calc(100% + 6px) !important;
-    left: 0 !important;
-    right: 0 !important;
-    background: #ffffff !important;
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 18px !important;
-    padding: 10px 8px !important;
-    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12) !important;
-  }
-
-  .site-navbar [class*="lg:hidden"][class*="absolute"] a {
-    min-height: 44px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    padding: 10px 14px !important;
-    font-size: 14.5px !important;
-    font-weight: 600 !important;
-    border-radius: 12px !important;
-    color: #334155 !important;
-    text-align: right !important;
-  }
-
-  .site-navbar [class*="lg:hidden"][class*="absolute"] a.active,
-  .site-navbar [class*="lg:hidden"][class*="absolute"] a[class*="bg-[#f1f5f9]"] {
-    background: #f1f5f9 !important;
-    color: #0f172a !important;
-    font-weight: 700 !important;
+    cursor: pointer !important;
+    touch-action: manipulation !important;
   }
 
   /* ── Mobile Menu Drawer ─────────────────────────────────────────────── */
