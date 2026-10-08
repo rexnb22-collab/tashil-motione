@@ -1,0 +1,6 @@
+{
+  "name": "Tashil Motion | تسهيل موشن",
+  "description": "المنصة العربية الأولى لابتكار أدوات الموشن جرافيك، برمجة سكريبتات After Effects، وقوالب MOGRT الاحترافية.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
