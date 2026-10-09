@@ -687,10 +687,10 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <div className="tm-latest-btns">
                     <button
                       type="button"
-                      onClick={() => onAddToCart(product)}
+                      onClick={() => onSelectProduct(product)}
                       className="tm-btn-buy"
                     >
-                      شراء الآن
+                      عرض وشراء
                     </button>
                     <button
                       type="button"

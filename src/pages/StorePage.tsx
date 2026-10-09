@@ -225,10 +225,10 @@ export const StorePage: React.FC<StorePageProps> = ({
                     </div>
                     <button
                       type="button"
-                      onClick={() => onAddToCart(product)}
+                      onClick={() => onSelectProduct(product)}
                       className="tashil-card-btn"
                     >
-                      شراء الآن
+                      عرض وشراء
                     </button>
                   </div>
                 </div>
