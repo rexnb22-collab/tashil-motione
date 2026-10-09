@@ -46,10 +46,12 @@ export const ProductPage: React.FC<ProductPageProps> = ({
   const [activeMediaIndex, setActiveMediaIndex] = useState(0);
   const [stickyVisible, setStickyVisible] = useState(false);
   const [relatedSlide, setRelatedSlide] = useState(0);
+  const [showMoreDetails, setShowMoreDetails] = useState(false);
 
   // Reset active media when product changes
   useEffect(() => {
     setActiveMediaIndex(0);
+    setShowMoreDetails(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [product.id]);
 
@@ -201,49 +203,70 @@ export const ProductPage: React.FC<ProductPageProps> = ({
         </section>
 
         {/* 3. DETAILED OVERVIEW (M_EL24: "ارتقِ بمشاريعك إلى المستوى التالي 🚀") */}
-        <section className="bg-white rounded-3xl p-6 sm:p-10 border border-[#e2e8f0] shadow-xs space-y-8">
-          <div className="border-b border-slate-100 pb-5">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0f172a]">
+        <section className="bg-white rounded-3xl p-6 sm:p-10 border border-[#e2e8f0] shadow-xs space-y-6">
+          <div className="border-b border-slate-100 pb-4">
+            <h2 className="text-xl sm:text-3xl font-extrabold text-[#0f172a]">
               {product.overviewTitle || 'نظرة عامة على المنتج'}
             </h2>
           </div>
 
+          {/* First paragraph is always visible */}
           <div className="space-y-4 text-base sm:text-[17px] text-[#334155] leading-relaxed">
-            {(product.overviewParagraphs || [product.description]).map((para, i) => (
-              <p key={i}>{para}</p>
-            ))}
+            <p>{(product.overviewParagraphs && product.overviewParagraphs[0]) || product.description}</p>
           </div>
 
-          {/* Structured Content Sections (What's New, What's Inside, Key Features, Who is this for) */}
-          {product.overviewSections && product.overviewSections.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-              {product.overviewSections.map((sec, sIdx) => (
-                <div
-                  key={sIdx}
-                  className="p-6 rounded-2xl bg-[#f8fafc] border border-slate-200/80 space-y-4"
-                >
-                  <h3 className="text-lg font-bold text-[#0f172a] flex items-center gap-2">
-                    {sec.title}
-                  </h3>
-                  <ul className="space-y-3 text-sm text-[#475569]">
-                    {sec.items.map((item, itIdx) => (
-                      <li key={itIdx} className="flex items-start gap-2.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#007A8C] mt-2 shrink-0" />
-                        <div>
-                          {item.title && (
-                            <strong className="text-[#0f172a] block sm:inline font-bold ml-1">
-                              {item.title}
-                            </strong>
-                          )}
-                          <span>{item.text}</span>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          )}
+          {/* Additional text & sections: On mobile, hidden until "عرض المزيد" is clicked. On desktop (sm+), always visible */}
+          <div className={`${showMoreDetails ? 'block' : 'hidden sm:block'} space-y-6 pt-2`}>
+            {product.overviewParagraphs && product.overviewParagraphs.length > 1 && (
+              <div className="space-y-4 text-base sm:text-[17px] text-[#334155] leading-relaxed">
+                {product.overviewParagraphs.slice(1).map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
+              </div>
+            )}
+
+            {/* Structured Content Sections (What's New, What's Inside, Key Features, Who is this for) */}
+            {product.overviewSections && product.overviewSections.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                {product.overviewSections.map((sec, sIdx) => (
+                  <div
+                    key={sIdx}
+                    className="p-5 sm:p-6 rounded-2xl bg-[#f8fafc] border border-slate-200/80 space-y-3 sm:space-y-4"
+                  >
+                    <h3 className="text-base sm:text-lg font-bold text-[#0f172a] flex items-center gap-2">
+                      {sec.title}
+                    </h3>
+                    <ul className="space-y-2.5 sm:space-y-3 text-sm text-[#475569]">
+                      {sec.items.map((item, itIdx) => (
+                        <li key={itIdx} className="flex items-start gap-2.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#007A8C] mt-2 shrink-0" />
+                          <div>
+                            {item.title && (
+                              <strong className="text-[#0f172a] block sm:inline font-bold ml-1">
+                                {item.title}
+                              </strong>
+                            )}
+                            <span>{item.text}</span>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Mobile Only: "عرض المزيد / عرض أقل" Toggle Button */}
+          <div className="block sm:hidden pt-2 border-t border-slate-100">
+            <button
+              type="button"
+              onClick={() => setShowMoreDetails((prev) => !prev)}
+              className="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer"
+            >
+              <span>{showMoreDetails ? 'عرض أقل ▴' : 'عرض المزيد من التفاصيل ▾'}</span>
+            </button>
+          </div>
         </section>
 
         {/* 4. KEY FEATURES 4-CARD GRID (M_EL31) */}
