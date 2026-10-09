@@ -2049,7 +2049,7 @@ body {
 
 @media (max-width: 767px) {
   /* --------------------------------------------------------------------------
-     1. Global Viewport, Container & Typography Resets
+     1. Global Viewport, Container & Typography Resets + Fluid Motion & Touch UI
      -------------------------------------------------------------------------- */
   html,
   body {
@@ -2059,6 +2059,7 @@ body {
     position: relative !important;
     -webkit-overflow-scrolling: touch !important;
     -webkit-tap-highlight-color: transparent !important;
+    scroll-behavior: smooth !important;
   }
 
   * {
@@ -2071,32 +2072,60 @@ body {
     text-size-adjust: 100% !important;
   }
 
-  /* Universal touch target and mobile behavior */
+  /* Universal fluid touch target and tactile micro-motion on tap */
   button,
   a,
   input,
   select,
   textarea {
     touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  button:active,
+  a:active,
+  .btn:active,
+  .card-btn:active,
+  .hero-button:active,
+  .tm-btn-buy:active,
+  .tm-btn-view:active,
+  .navbar-store:active {
+    transform: scale(0.96) !important;
+    transition: transform 0.12s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  }
+
+  /* Smooth appearance for mobile cards */
+  .tm-latest-card,
+  .tashil-card,
+  .next-section article,
+  .pricing-wrapper .card,
+  .faq-box,
+  .testimonials-grid article {
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .tm-latest-card:active,
+  .tashil-card:active {
+    transform: scale(0.98) !important;
   }
 
   /* Reduce excessive section gaps on mobile */
   .space-y-20 > :not([hidden]) ~ :not([hidden]) {
-    margin-top: 20px !important;
+    margin-top: 24px !important;
   }
 
   /* Remove extra top padding from all sections on mobile */
   .pt-4 {
-    padding-top: 6px !important;
+    padding-top: 8px !important;
   }
 
   .pt-2 {
-    padding-top: 4px !important;
+    padding-top: 6px !important;
   }
 
   .site-container {
-    width: calc(100% - 24px) !important;
-    max-width: calc(100% - 24px) !important;
+    width: calc(100% - 20px) !important;
+    max-width: calc(100% - 20px) !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
     margin-left: auto !important;
@@ -2693,18 +2722,29 @@ body {
   }
 
   .tm-latest-card {
-    border-radius: 14px !important;
+    border-radius: 16px !important;
     overflow: hidden !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(226, 232, 240, 0.8) !important;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04) !important;
+  }
+
+  .tm-latest-card img {
+    aspect-ratio: 16 / 10 !important;
+    object-fit: cover !important;
+    border-radius: 12px 12px 0 0 !important;
   }
 
   .tm-latest-body {
-    padding: 10px !important;
+    padding: 10px 10px 12px 10px !important;
     gap: 6px !important;
   }
 
   .tm-latest-title {
     font-size: 13px !important;
     line-height: 1.35 !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
   }
 
   .tm-latest-footer {
@@ -2978,17 +3018,27 @@ body {
   }
 
   .tashil-card {
-    border-radius: 14px !important;
+    border-radius: 16px !important;
     overflow: hidden !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(226, 232, 240, 0.8) !important;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04) !important;
+  }
+
+  .tashil-card img {
+    aspect-ratio: 16 / 10 !important;
+    object-fit: cover !important;
   }
 
   .tashil-card-body {
-    padding: 10px !important;
+    padding: 10px 10px 12px 10px !important;
   }
 
   .tashil-card-title {
     font-size: 13px !important;
     line-height: 1.35 !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
     margin-bottom: 6px !important;
   }
 
