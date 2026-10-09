@@ -264,13 +264,13 @@ export const ProductPage: React.FC<ProductPageProps> = ({
               onClick={() => setShowMoreDetails((prev) => !prev)}
               className="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer"
             >
-              <span>{showMoreDetails ? 'عرض أقل ▴' : 'عرض المزيد من التفاصيل ▾'}</span>
+              <span>{showMoreDetails ? 'إخفاء التفاصيل الزائدة ▴' : 'عرض باقي التفاصيل والمميزات ▾'}</span>
             </button>
           </div>
         </section>
 
-        {/* 4. KEY FEATURES 4-CARD GRID (M_EL31) */}
-        <section className="space-y-8">
+        {/* 4. KEY FEATURES 4-CARD GRID (M_EL31) - hidden on mobile unless showMoreDetails is true */}
+        <section className={`space-y-8 ${showMoreDetails ? 'block' : 'hidden sm:block'}`}>
           <div className="text-center max-w-2xl mx-auto space-y-2.5">
             <h2 className="text-2xl sm:text-3xl font-bold text-[#0f172a]">
               المميزات الأساسية التي تجعلنا خيارك الأفضل 🎯
@@ -483,8 +483,8 @@ export const ProductPage: React.FC<ProductPageProps> = ({
           </div>
         </section>
 
-        {/* 7. VERIFIED TESTIMONIALS (M_EL90) */}
-        <section className="bg-white rounded-3xl p-6 sm:p-10 border border-[#e2e8f0] space-y-8">
+        {/* 7. VERIFIED TESTIMONIALS (M_EL90) - hidden on mobile unless showMoreDetails is true */}
+        <section className={`bg-white rounded-3xl p-6 sm:p-10 border border-[#e2e8f0] space-y-8 ${showMoreDetails ? 'block' : 'hidden sm:block'}`}>
           <div className="text-center max-w-xl mx-auto space-y-2">
             <h2 className="text-2xl sm:text-3xl font-bold text-[#0f172a]">
               نبتكر أصولاً وموارد رقمية استثنائية ⭐
